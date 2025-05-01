@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "48234802689",
+    "project_id": "hotel-anchor",
+    "storage_bucket": "hotel-anchor.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:48234802689:android:101c4d8d3a0efe7b005a00",
+        "android_client_info": {
+          "package_name": "com.example.hotelanchor"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAZctMRRA29nvbsF-UX1mOv7Gybxh0hg38"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:48234802689:android:ce4aa9e6cb9e748b005a00",
+        "android_client_info": {
+          "package_name": "com.example.hotelanchor.dev"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAZctMRRA29nvbsF-UX1mOv7Gybxh0hg38"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

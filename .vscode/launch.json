@@ -1,0 +1,68 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Development",
+            "request": "launch",
+            "type": "dart",
+            "program": "lib/main_development.dart",
+            "args": [
+                "--flavor",
+                "development"
+            ]
+        },
+        {
+            "name": "Development (profile mode)",
+            "request": "launch",
+            "type": "dart",
+            "program": "lib/main_development.dart",
+            "flutterMode": "profile",
+            "args": [
+                "--flavor",
+                "development"
+            ]
+        },
+        {
+            "name": "Staging",
+            "request": "launch",
+            "type": "dart",
+            "program": "lib/main_staging.dart",
+            "args": [
+                "--flavor",
+                "staging"
+            ]
+        },
+        {
+            "name": "Staging (profile mode)",
+            "request": "launch",
+            "type": "dart",
+            "program": "lib/main_staging.dart",
+            "flutterMode": "profile",
+            "args": [
+                "--flavor",
+                "staging"
+            ]
+        },
+        {
+            "name": "Production",
+            "request": "launch",
+            "type": "dart",
+            "program": "lib/main_production.dart",
+            "args": [
+                "--flavor",
+                "production"
+            ]
+        },
+        {
+            "name": "Production (profile mode)",
+            "request": "launch",
+            "type": "dart",
+            "program": "lib/main_production.dart",
+            "flutterMode": "profile",
+            "args": [
+                "--flavor",
+                "production"
+            ]
+        }
+    ]
+}
