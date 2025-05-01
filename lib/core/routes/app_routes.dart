@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:hotelanchor/features/hotels/presentation/screens/gallery_screen.dart';
 import '../../features/splash/presentation/pages/splash_screen.dart';
 import '../../features/auth/presentation/pages/auth_screen.dart';
 import '../../features/hotels/presentation/screens/hotel_listing_screen.dart';
@@ -28,6 +29,8 @@ class AppRoutes {
         return MaterialPageRoute(builder: (_) => const HotelListingScreen());
       case about:
         return MaterialPageRoute(builder: (_) => const AboutScreen());
+      case gallery:
+        return MaterialPageRoute(builder: (_) => const GalleryScreen());
       default:
         return MaterialPageRoute(
           builder:

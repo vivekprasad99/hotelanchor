@@ -6,8 +6,6 @@ import 'package:hotelanchor/core/theme/app_theme.dart';
 import 'package:hotelanchor/core/routes/app_routes.dart';
 import 'package:hotelanchor/features/auth/presentation/bloc/auth_bloc.dart';
 import 'package:hotelanchor/features/auth/data/repositories/auth_repository_impl.dart';
-import 'package:hotelanchor/features/hotels/presentation/bloc/hotel_bloc.dart';
-import 'package:hotelanchor/features/hotels/data/repositories/hotel_repository_impl.dart';
 
 class HotelAnchorApp extends StatelessWidget {
   final AppConfig config;

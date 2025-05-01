@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:hotelanchor/core/constants/app_constants.dart';
-import 'package:hotelanchor/core/routes/app_routes.dart';
 
 class HotelDrawer extends StatelessWidget {
   final int selectedIndex;
@@ -9,12 +8,12 @@ class HotelDrawer extends StatelessWidget {
   final Function(bool) onExpansionChanged;
 
   const HotelDrawer({
-    Key? key,
+    super.key,
     required this.selectedIndex,
     required this.isExpanded,
     required this.onItemTapped,
     required this.onExpansionChanged,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -64,7 +63,6 @@ class HotelDrawer extends StatelessWidget {
             selected: selectedIndex == 2,
             onTap: () {
               onItemTapped(2);
-              Navigator.pushReplacementNamed(context, '/gallery');
             },
           ),
           ExpansionTile(

@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:hotelanchor/core/constants/app_constants.dart';
 import 'package:hotelanchor/features/hotels/presentation/widgets/hotel_drawer.dart';
-import 'package:hotelanchor/features/hotels/presentation/widgets/hotel_gallery_section.dart';
 import 'package:hotelanchor/features/hotels/presentation/screens/gallery_detail_screen.dart';
 
 class GalleryScreen extends StatefulWidget {
-  const GalleryScreen({Key? key}) : super(key: key);
+  const GalleryScreen({super.key});
 
   @override
   State<GalleryScreen> createState() => _GalleryScreenState();
@@ -75,7 +74,7 @@ class _GalleryScreenState extends State<GalleryScreen> {
               alignment: Alignment.center,
               children: [
                 Image.asset(
-                  '${AppConstants.imagePath}/gallery_banner.jpg',
+                  '${AppConstants.imagePath}/header__bg.webp',
                   width: double.infinity,
                   height: 200,
                   fit: BoxFit.cover,
@@ -186,19 +185,6 @@ class _GalleryScreenState extends State<GalleryScreen> {
                 ],
               ),
             ),
-
-            const SizedBox(height: 32),
-
-            // Carousel section for featured images
-            const Padding(
-              padding: EdgeInsets.symmetric(horizontal: 16.0),
-              child: Text(
-                'Featured Images',
-                style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
-              ),
-            ),
-            const SizedBox(height: 16),
-            const HotelGallerySection(),
 
             const SizedBox(height: 32),
           ],
