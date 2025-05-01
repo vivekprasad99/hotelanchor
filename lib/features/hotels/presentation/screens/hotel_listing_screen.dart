@@ -47,9 +47,9 @@ class _HotelListingScreenState extends State<HotelListingScreen> {
         case 2: // Gallery
           Navigator.pushNamed(context, AppRoutes.gallery);
           break;
-        // case 3: // Facilities
-        //   Navigator.pushNamed(context, AppRoutes.facilities);
-        //   break;
+        case 5: // Service
+          Navigator.pushNamed(context, AppRoutes.service);
+          break;
         // Other cases will be added later
       }
     }
@@ -64,17 +64,7 @@ class _HotelListingScreenState extends State<HotelListingScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Hotel Anchor'),
-        actions: [
-          IconButton(
-            icon: const Icon(Icons.search),
-            onPressed: () {
-              // Search functionality will be implemented later
-            },
-          ),
-        ],
-      ),
+      appBar: AppBar(title: const Text('Hotel Anchor')),
       drawer: HotelDrawer(
         selectedIndex: _selectedIndex,
         isExpanded: _isExpanded,

@@ -22,7 +22,7 @@ class HotelDrawer extends StatelessWidget {
         padding: EdgeInsets.zero,
         children: [
           DrawerHeader(
-            decoration: BoxDecoration(color: Theme.of(context).primaryColor),
+            decoration: BoxDecoration(color: const Color(0xFFB08968)),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
