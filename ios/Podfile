@@ -1,14 +1,23 @@
 # Uncomment this line to define a global platform for your project
-# platform :ios, '12.0'
+platform :ios, '13.0'  # Update to iOS 13.0 for latest Firebase
 
 # CocoaPods analytics sends network stats synchronously affecting flutter build latency.
 ENV['COCOAPODS_DISABLE_STATS'] = 'true'
 
 project 'Runner', {
-  'Debug' => :debug,
-  'Profile' => :release,
-  'Release' => :release,
+  'Debug-Development' => :debug,
+  'Debug-Staging' => :debug,
+  'Debug-Production' => :debug,
+  'Profile-Development' => :release,
+  'Profile-Staging' => :release,
+  'Profile-Production' => :release,
+  'Release-Development' => :release,
+  'Release-Staging' => :release,
+  'Release-Production' => :release,
 }
+
+# Update Firebase SDK version to match the one required by firebase_auth
+$FirebaseSDKVersion = '11.12.0'
 
 def flutter_root
   generated_xcode_build_settings_path = File.expand_path(File.join('..', 'Flutter', 'Generated.xcconfig'), __FILE__)
@@ -28,7 +37,9 @@ require File.expand_path(File.join('packages', 'flutter_tools', 'bin', 'podhelpe
 flutter_ios_podfile_setup
 
 target 'Runner' do
-  use_frameworks!
+  # Force the use of static frameworks for Firebase
+  use_frameworks! :linkage => :static
+  use_modular_headers!
 
   flutter_install_all_ios_pods File.dirname(File.realpath(__FILE__))
   target 'RunnerTests' do
@@ -39,5 +50,14 @@ end
 post_install do |installer|
   installer.pods_project.targets.each do |target|
     flutter_additional_ios_build_settings(target)
+    
+    # Fix for Firebase modular headers issue
+    target.build_configurations.each do |config|
+      config.build_settings['CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES'] = 'YES'
+      config.build_settings['IPHONEOS_DEPLOYMENT_TARGET'] = '13.0'  # Update to iOS 13.0
+      
+      # Enable static frameworks for Firebase
+      config.build_settings['BUILD_LIBRARY_FOR_DISTRIBUTION'] = 'YES'
+    end
   end
 end

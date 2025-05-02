@@ -1,5 +1,5 @@
-import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:hotelanchor/firebase_options.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 import 'package:hotelanchor/app.dart';
@@ -10,7 +10,7 @@ void main() async {
 
   final config = AppConfig.development();
 
-  // Initialize Firebase
+  // Temporarily disable Firebase
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
 
   // Initialize Supabase
