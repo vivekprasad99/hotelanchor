@@ -47,6 +47,9 @@ class _HotelListingScreenState extends State<HotelListingScreen> {
         case 2: // Gallery
           Navigator.pushNamed(context, AppRoutes.gallery);
           break;
+        case 31: // Restaurant
+          Navigator.pushNamed(context, AppRoutes.restaurant);
+          break;
         case 4: // Blog
           Navigator.pushNamed(context, AppRoutes.blog);
           break;

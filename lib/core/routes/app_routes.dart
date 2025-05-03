@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hotelanchor/features/hotels/presentation/screens/gallery_screen.dart';
+import 'package:hotelanchor/features/hotels/presentation/screens/restaurant/restaurant_screen.dart';
 import 'package:hotelanchor/features/hotels/presentation/screens/service/service_screen.dart';
 import 'package:hotelanchor/features/hotels/presentation/screens/blog/blog_screen.dart';
 import '../../features/splash/presentation/pages/splash_screen.dart';
@@ -37,6 +38,8 @@ class AppRoutes {
         return MaterialPageRoute(builder: (_) => const ServiceScreen());
       case blog:
         return MaterialPageRoute(builder: (_) => const BlogScreen());
+      case restaurant:
+        return MaterialPageRoute(builder: (_) => const RestaurantScreen());
       default:
         return MaterialPageRoute(
           builder:
