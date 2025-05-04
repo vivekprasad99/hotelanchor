@@ -3,6 +3,7 @@ import 'package:hotelanchor/features/hotels/presentation/screens/gallery_screen.
 import 'package:hotelanchor/features/hotels/presentation/screens/restaurant/restaurant_screen.dart';
 import 'package:hotelanchor/features/hotels/presentation/screens/service/service_screen.dart';
 import 'package:hotelanchor/features/hotels/presentation/screens/blog/blog_screen.dart';
+import 'package:hotelanchor/features/hotels/presentation/screens/event/event_screen.dart';
 import '../../features/splash/presentation/pages/splash_screen.dart';
 import '../../features/auth/presentation/pages/auth_screen.dart';
 import '../../features/hotels/presentation/screens/hotel_listing_screen.dart';
@@ -40,6 +41,8 @@ class AppRoutes {
         return MaterialPageRoute(builder: (_) => const BlogScreen());
       case restaurant:
         return MaterialPageRoute(builder: (_) => const RestaurantScreen());
+      case event:
+        return MaterialPageRoute(builder: (_) => const EventScreen());
       default:
         return MaterialPageRoute(
           builder:
