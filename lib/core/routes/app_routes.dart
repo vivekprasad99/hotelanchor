@@ -8,6 +8,7 @@ import '../../features/splash/presentation/pages/splash_screen.dart';
 import '../../features/auth/presentation/pages/auth_screen.dart';
 import '../../features/hotels/presentation/screens/hotel_listing_screen.dart';
 import '../../features/hotels/presentation/screens/about_screen.dart';
+import '../../features/hotels/presentation/screens/contact/contact_screen.dart';
 
 class AppRoutes {
   static const String splash = '/';
@@ -43,6 +44,8 @@ class AppRoutes {
         return MaterialPageRoute(builder: (_) => const RestaurantScreen());
       case event:
         return MaterialPageRoute(builder: (_) => const EventScreen());
+      case contact:
+        return MaterialPageRoute(builder: (_) => const ContactScreen());
       default:
         return MaterialPageRoute(
           builder:

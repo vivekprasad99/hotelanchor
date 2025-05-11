@@ -59,6 +59,9 @@ class _HotelListingScreenState extends State<HotelListingScreen> {
         case 5: // Service
           Navigator.pushNamed(context, AppRoutes.service);
           break;
+        case 6: // Contact
+          Navigator.pushNamed(context, AppRoutes.contact);
+          break;
         // Other cases will be added later
       }
     }

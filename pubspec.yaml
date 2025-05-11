@@ -61,6 +61,12 @@ dependencies:
   # Animations
   flutter_spinkit: ^5.2.0
 
+  # Add Google Maps Flutter package
+  google_maps_flutter: ^2.5.0
+
+  # Add url_launcher if not already there
+  url_launcher: ^6.1.10
+
 dev_dependencies:
   flutter_test:
     sdk: flutter

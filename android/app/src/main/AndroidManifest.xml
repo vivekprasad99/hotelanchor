@@ -1,4 +1,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Add this line for Google Maps API key -->
+    <meta-data
+        android:name="com.google.android.geo.API_KEY"
+        android:value="YOUR_API_KEY_HERE" />
     <application
         android:label="hotelanchor"
         android:name="${applicationName}"
