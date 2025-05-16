@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:hotelanchor/features/hotels/presentation/screens/gallery_screen.dart';
 import 'package:hotelanchor/features/hotels/presentation/screens/restaurant/restaurant_screen.dart';
+import 'package:hotelanchor/features/hotels/presentation/screens/room/room_detail_screen.dart';
+import 'package:hotelanchor/features/hotels/presentation/screens/room/rooms_listing_screen.dart';
 import 'package:hotelanchor/features/hotels/presentation/screens/service/service_screen.dart';
 import 'package:hotelanchor/features/hotels/presentation/screens/blog/blog_screen.dart';
 import 'package:hotelanchor/features/hotels/presentation/screens/event/event_screen.dart';
@@ -22,8 +24,13 @@ class AppRoutes {
   static const String blog = '/blog';
   static const String service = '/service';
   static const String contact = '/contact';
+  static const String roomDetail = '/room-detail';
+  static const String roomsListing = '/rooms-listing';
 
   static Route<dynamic> generateRoute(RouteSettings settings) {
+    // Extract arguments if available
+    final args = settings.arguments as Map<String, dynamic>?;
+
     switch (settings.name) {
       case splash:
         return MaterialPageRoute(builder: (_) => const SplashScreen());
@@ -46,6 +53,14 @@ class AppRoutes {
         return MaterialPageRoute(builder: (_) => const EventScreen());
       case contact:
         return MaterialPageRoute(builder: (_) => const ContactScreen());
+      case roomDetail:
+        // Get the room type from arguments, default to 'deluxe' if not provided
+        final roomType = args?['roomType'] as String? ?? 'deluxe';
+        return MaterialPageRoute(
+          builder: (_) => RoomDetailScreen(roomType: roomType),
+        );
+      case roomsListing:
+        return MaterialPageRoute(builder: (_) => const RoomsListingScreen());
       default:
         return MaterialPageRoute(
           builder:

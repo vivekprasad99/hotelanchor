@@ -4,7 +4,6 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:hotelanchor/core/routes/app_routes.dart';
 import 'package:hotelanchor/features/hotels/presentation/widgets/hotel_drawer.dart';
 import 'package:hotelanchor/features/hotels/presentation/widgets/about_us_section.dart';
-import 'package:hotelanchor/features/hotels/presentation/widgets/hotel_facilities_section.dart';
 import 'package:hotelanchor/features/hotels/presentation/widgets/hotel_room_section.dart';
 import 'package:hotelanchor/features/hotels/presentation/widgets/special_offers_section.dart';
 import 'package:hotelanchor/features/hotels/presentation/widgets/hotel_gallery_section.dart';
@@ -19,7 +18,6 @@ class HotelListingScreen extends StatefulWidget {
 class _HotelListingScreenState extends State<HotelListingScreen> {
   int _selectedIndex = 0;
   bool _isExpanded = false;
-  int _currentCarouselIndex = 0;
 
   @override
   void initState() {
@@ -133,7 +131,10 @@ class _HotelListingScreenState extends State<HotelListingScreen> {
                           const SizedBox(height: 16),
                           ElevatedButton(
                             onPressed: () {
-                              // Navigate to rooms
+                              Navigator.pushNamed(
+                                context,
+                                AppRoutes.roomsListing,
+                              );
                             },
                             style: ElevatedButton.styleFrom(
                               backgroundColor: const Color(0xFFB08968),

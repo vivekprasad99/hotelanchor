@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hotelanchor/core/constants/app_constants.dart';
+import 'package:hotelanchor/core/routes/app_routes.dart';
 
 class SpecialOffersSection extends StatelessWidget {
   const SpecialOffersSection({super.key});
@@ -214,11 +215,13 @@ class SpecialOffersSection extends StatelessWidget {
 
                 const SizedBox(height: 16),
 
-                // Book Now button
+                // Book Now button with WhatsApp integration
                 SizedBox(
                   width: double.infinity,
                   child: ElevatedButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.pushNamed(context, AppRoutes.contact);
+                    },
                     style: ElevatedButton.styleFrom(
                       backgroundColor: const Color(0xFFB08968),
                       foregroundColor: Colors.white,

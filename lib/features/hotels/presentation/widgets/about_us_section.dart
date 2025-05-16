@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hotelanchor/core/constants/app_constants.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class AboutUsSection extends StatelessWidget {
   const AboutUsSection({super.key});
@@ -112,9 +113,7 @@ class AboutUsSection extends StatelessWidget {
           // Book now button
           Center(
             child: ElevatedButton(
-              onPressed: () {
-                // Add booking functionality
-              },
+              onPressed: () => _openWhatsApp(),
               style: ElevatedButton.styleFrom(
                 backgroundColor: const Color(0xFFB08968),
                 foregroundColor: Colors.white,
@@ -136,5 +135,60 @@ class AboutUsSection extends StatelessWidget {
         ],
       ),
     );
+  }
+
+  // Method to open WhatsApp with the given number
+  Future<void> _openWhatsApp() async {
+    final phoneNumber =
+        "919341282117"; // +91 93412 82117 in international format
+    final message = "Hello, I'm interested in booking a special offer package.";
+
+    // Try different URL schemes for WhatsApp
+    final List<Uri> uriOptions = [
+      // Standard wa.me link
+      Uri.parse(
+        "https://wa.me/$phoneNumber?text=${Uri.encodeComponent(message)}",
+      ),
+
+      // Direct WhatsApp intent
+      Uri.parse(
+        "whatsapp://send?phone=$phoneNumber&text=${Uri.encodeComponent(message)}",
+      ),
+
+      // Direct WhatsApp Business intent
+      Uri.parse(
+        "whatsapp://send?phone=$phoneNumber&text=${Uri.encodeComponent(message)}",
+      ),
+    ];
+
+    bool launched = false;
+    for (var uri in uriOptions) {
+      try {
+        if (await canLaunchUrl(uri)) {
+          await launchUrl(uri, mode: LaunchMode.externalApplication);
+          launched = true;
+          break;
+        }
+      } catch (e) {
+        // Continue to next option
+        print("Failed to launch $uri: $e");
+      }
+    }
+
+    // If all WhatsApp options failed, try phone call as fallback
+    if (!launched) {
+      final phoneUrl = Uri.parse("tel:+$phoneNumber");
+      try {
+        if (await canLaunchUrl(phoneUrl)) {
+          await launchUrl(phoneUrl);
+        } else {
+          throw 'Could not launch WhatsApp or make a call';
+        }
+      } catch (e) {
+        print("Failed to launch phone call: $e");
+        // Show a snackbar or dialog to inform the user
+        // that we couldn't open WhatsApp or make a call
+      }
+    }
   }
 }

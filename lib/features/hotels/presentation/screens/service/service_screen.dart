@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:hotelanchor/core/routes/app_routes.dart';
 import 'package:hotelanchor/features/hotels/presentation/widgets/hotel_drawer.dart';
 import 'package:hotelanchor/features/hotels/presentation/screens/service/service_mobile_view.dart';
 
@@ -31,12 +32,34 @@ class _ServiceScreenState extends State<ServiceScreen> {
     if (index == 0) {
       // Navigate to Home
       Navigator.pushReplacementNamed(context, '/home');
-    } else if (index == 1) {
-      // Navigate to About
-      Navigator.pushReplacementNamed(context, '/about');
-    } else if (index == 2) {
-      // Navigate to Gallery
-      Navigator.pushReplacementNamed(context, '/gallery');
+    }
+    if (index == 1) {
+      // Navigate to Home
+      Navigator.pushReplacementNamed(context, AppRoutes.about);
+    }
+    if (index == 2) {
+      // Navigate to Home
+      Navigator.pushReplacementNamed(context, AppRoutes.gallery);
+    }
+    if (index == 31) {
+      // Navigate to Home
+      Navigator.pushReplacementNamed(context, AppRoutes.restaurant);
+    }
+    if (index == 32) {
+      // Navigate to Home
+      Navigator.pushReplacementNamed(context, AppRoutes.event);
+    }
+    if (index == 4) {
+      // Navigate to Home
+      Navigator.pushReplacementNamed(context, AppRoutes.blog);
+    }
+    if (index == 5) {
+      // Navigate to Home
+      Navigator.pushReplacementNamed(context, AppRoutes.service);
+    }
+    if (index == 6) {
+      // Navigate to Home
+      Navigator.pushReplacementNamed(context, AppRoutes.contact);
     }
   }
 

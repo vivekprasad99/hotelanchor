@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:hotelanchor/core/constants/app_constants.dart';
+import 'package:hotelanchor/core/routes/app_routes.dart';
 
 class HotelRoomsSection extends StatefulWidget {
   const HotelRoomsSection({super.key});

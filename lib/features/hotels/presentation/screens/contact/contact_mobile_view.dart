@@ -175,20 +175,6 @@ class ContactMobileView extends StatelessWidget {
     );
   }
 
-  Widget _buildMapSection() {
-    return Container(
-      width: double.infinity,
-      height: 300,
-      color: Colors.grey[300],
-      child: const Center(
-        child: Text(
-          'Google Map will be displayed here',
-          style: TextStyle(fontSize: 16, color: Colors.black54),
-        ),
-      ),
-    );
-  }
-
   Widget _buildTextField({
     required String label,
     required String hintText,
