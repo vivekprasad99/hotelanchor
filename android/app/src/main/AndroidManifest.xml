@@ -4,10 +4,10 @@
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         
-        <!-- Add Google Maps API key inside application tag -->
+        <!-- Update Google Maps API key with correct key -->
         <meta-data
             android:name="com.google.android.geo.API_KEY"
-            android:value="AlzaSy3Dul3H96XWzqiPrMVlt5CY56Xr6YFmJir" />
+            android:value="AIzaSyAo-4Q5_QgomkSkHCA-zl7Av7pc4ug0wCc" />
             
         <activity
             android:name=".MainActivity"
@@ -37,6 +37,11 @@
             android:name="flutterEmbedding"
             android:value="2" />
     </application>
+    
+    <!-- Add location permissions -->
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     
     <!-- Required to query activities that can process text -->
     <queries>

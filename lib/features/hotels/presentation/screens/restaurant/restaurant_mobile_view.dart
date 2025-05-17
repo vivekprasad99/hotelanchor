@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:hotelanchor/core/constants/app_constants.dart';
 import 'package:hotelanchor/features/hotels/presentation/screens/restaurant/restaurant_gallery_view.dart';
 import 'package:hotelanchor/features/hotels/presentation/screens/restaurant/restaurant_menu_view.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class RestaurantMobileView extends StatelessWidget {
   const RestaurantMobileView({super.key});
@@ -153,42 +154,47 @@ class RestaurantMobileView extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           // Reservation section
-                          Container(
-                            padding: const EdgeInsets.all(16),
-                            decoration: BoxDecoration(
-                              border: Border.all(color: Colors.grey.shade300),
-                              borderRadius: BorderRadius.circular(8),
-                            ),
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                const Text(
-                                  'Reservation By Phone',
-                                  style: TextStyle(
-                                    fontSize: 14,
-                                    fontWeight: FontWeight.w500,
-                                    color: Colors.black87,
+                          InkWell(
+                            onTap: (){
+                              _launchUrl('tel:0841382117');
+                            },
+                            child: Container(
+                              padding: const EdgeInsets.all(16),
+                              decoration: BoxDecoration(
+                                border: Border.all(color: Colors.grey.shade300),
+                                borderRadius: BorderRadius.circular(8),
+                              ),
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  const Text(
+                                    'Reservation By Phone',
+                                    style: TextStyle(
+                                      fontSize: 14,
+                                      fontWeight: FontWeight.w500,
+                                      color: Colors.black87,
+                                    ),
                                   ),
-                                ),
-                                const SizedBox(height: 8),
-                                Row(
-                                  children: [
-                                    const Icon(
-                                      Icons.phone,
-                                      size: 16,
-                                      color: Colors.black54,
-                                    ),
-                                    const SizedBox(width: 8),
-                                    const Text(
-                                      '0841382117',
-                                      style: TextStyle(
-                                        fontSize: 14,
-                                        color: Colors.black87,
+                                  const SizedBox(height: 8),
+                                  Row(
+                                    children: [
+                                      const Icon(
+                                        Icons.phone,
+                                        size: 16,
+                                        color: Colors.black54,
                                       ),
-                                    ),
-                                  ],
-                                ),
-                              ],
+                                      const SizedBox(width: 8),
+                                      const Text(
+                                        '0841382117',
+                                        style: TextStyle(
+                                          fontSize: 14,
+                                          color: Colors.black87,
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ],
+                              ),
                             ),
                           ),
 
@@ -252,5 +258,12 @@ class RestaurantMobileView extends StatelessWidget {
         ],
       ),
     );
+  }
+
+  Future<void> _launchUrl(String urlString) async {
+    final Uri url = Uri.parse(urlString);
+    if (!await launchUrl(url)) {
+      throw Exception('Could not launch $url');
+    }
   }
 }

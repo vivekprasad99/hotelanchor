@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hotelanchor/core/constants/app_constants.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class HotelDrawer extends StatelessWidget {
   final int selectedIndex;
@@ -110,17 +111,27 @@ class HotelDrawer extends StatelessWidget {
             enabled: false,
             dense: true,
           ),
-          ListTile(
-            leading: const Icon(Icons.phone),
-            title: const Text('93412 82117'),
-            enabled: false,
-            dense: true,
+          InkWell(
+            onTap: () {
+              _launchUrl('tel:93412 82117');
+            },
+            child: ListTile(
+              leading: const Icon(Icons.phone),
+              title: const Text('93412 82117'),
+              enabled: false,
+              dense: true,
+            ),
           ),
-          ListTile(
-            leading: const Icon(Icons.phone_android),
-            title: const Text('65131 01329'),
-            enabled: false,
-            dense: true,
+          InkWell(
+            onTap: () {
+              _launchUrl('tel:65131 01329');
+            },
+            child: ListTile(
+              leading: const Icon(Icons.phone_android),
+              title: const Text('65131 01329'),
+              enabled: false,
+              dense: true,
+            ),
           ),
           ListTile(
             leading: const Icon(Icons.email),
@@ -131,5 +142,12 @@ class HotelDrawer extends StatelessWidget {
         ],
       ),
     );
+  }
+
+  Future<void> _launchUrl(String urlString) async {
+    final Uri url = Uri.parse(urlString);
+    if (!await launchUrl(url)) {
+      throw Exception('Could not launch $url');
+    }
   }
 }

@@ -233,7 +233,7 @@ class _HotelListingScreenState extends State<HotelListingScreen> {
                     physics: const NeverScrollableScrollPhysics(),
                     crossAxisSpacing: 15,
                     mainAxisSpacing: 15,
-                    childAspectRatio: 0.62,
+                    childAspectRatio: 0.55,
                     children: [
                       _buildFacilityItem(
                         icon: Icons.ac_unit,

@@ -36,7 +36,7 @@ class _SplashScreenState extends State<SplashScreen>
     await Future.delayed(const Duration(seconds: 3));
     if (mounted) {
       // Changed login to auth since that's the correct route name
-      Navigator.pushReplacementNamed(context, AppRoutes.auth);
+      Navigator.pushReplacementNamed(context, AppRoutes.hotels);
     }
   }
 

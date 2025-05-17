@@ -228,8 +228,7 @@ class RoomsListingMobileView extends StatelessWidget {
                     onPressed: () {
                       Navigator.pushNamed(
                         context,
-                        AppRoutes.roomDetail,
-                        arguments: {'roomType': room['type']},
+                        AppRoutes.contact,
                       );
                     },
                     style: TextButton.styleFrom(

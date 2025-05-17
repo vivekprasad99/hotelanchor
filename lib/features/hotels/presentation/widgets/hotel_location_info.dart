@@ -12,12 +12,13 @@ class HotelLocationInfo extends StatefulWidget {
 class _HotelLocationInfoState extends State<HotelLocationInfo> {
   // Hotel Anchor coordinates in Ranchi
   static const LatLng _hotelLocation = LatLng(
-    23.3700,
-    85.3400,
+    23.37822,
+    85.35006,
   ); // Approximate coordinates
 
-  late GoogleMapController _mapController;
+  GoogleMapController? _mapController;
   final Set<Marker> _markers = {};
+  bool _mapLoaded = false;
 
   @override
   void initState() {
@@ -36,18 +37,23 @@ class _HotelLocationInfoState extends State<HotelLocationInfo> {
 
   void _onMapCreated(GoogleMapController controller) {
     _mapController = controller;
+    setState(() {
+      _mapLoaded = true;
+    });
+  }
+
+  @override
+  void dispose() {
+    _mapController?.dispose();
+    super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
-    // Check if we're on a mobile device (narrow screen)
-    final screenWidth = MediaQuery.of(context).size.width;
-    final isMobile = screenWidth < 600;
-
     return Container(
       padding: const EdgeInsets.all(24.0),
       color: Colors.white,
-      child: isMobile ? _buildMobileLayout() : _buildDesktopLayout(),
+      child: _buildMobileLayout(),
     );
   }
 
@@ -65,7 +71,14 @@ class _HotelLocationInfoState extends State<HotelLocationInfo> {
           ),
           child: ClipRRect(
             borderRadius: BorderRadius.circular(8),
-            child: _buildGoogleMap(250),
+            child: Stack(
+              children: [
+                _buildGoogleMap(250),
+                // Loading indicator while map loads
+                if (!_mapLoaded)
+                  const Center(child: CircularProgressIndicator()),
+              ],
+            ),
           ),
         ),
         const SizedBox(height: 24),
@@ -129,105 +142,6 @@ class _HotelLocationInfoState extends State<HotelLocationInfo> {
     );
   }
 
-  Widget _buildDesktopLayout() {
-    return Row(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        // Map section (left side)
-        Expanded(
-          flex: 1,
-          child: Container(
-            height: 400,
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(8),
-              border: Border.all(color: Colors.grey[300]!),
-            ),
-            child: ClipRRect(
-              borderRadius: BorderRadius.circular(8),
-              child: _buildGoogleMap(400),
-            ),
-          ),
-        ),
-
-        const SizedBox(width: 24),
-
-        // Info sections (right side)
-        Expanded(
-          flex: 1,
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              // Hotel Info Center
-              _buildInfoSection(
-                title: 'Hotel Info Center',
-                items: [
-                  InfoItem(label: 'Open Hours:', value: 'Monday - Sunday'),
-                  InfoItem(
-                    label: 'Telephone:',
-                    value: '93412 82117',
-                    isPhone: true,
-                  ),
-                  InfoItem(label: 'Fax:', value: '65131 01329'),
-                  InfoItem(
-                    label: 'Email:',
-                    value: 'hotelanchorranchi@gmail.com',
-                    isEmail: true,
-                  ),
-                ],
-              ),
-
-              const SizedBox(height: 32),
-
-              // Hotel Location
-              _buildInfoSection(
-                title: 'Hotel Location',
-                items: [
-                  InfoItem(
-                    label: 'Address:',
-                    value: 'Tiril Rd, Kokar, Ranchi, Jharkhand 834001',
-                    isAddress: true,
-                  ),
-                  InfoItem(
-                    label: 'Telephone:',
-                    value: '93412 82117',
-                    isPhone: true,
-                  ),
-                  InfoItem(label: 'Fax:', value: '65131 01329'),
-                  InfoItem(
-                    label: 'Email:',
-                    value: 'hotelanchorranchi@gmail.com',
-                    isEmail: true,
-                  ),
-                ],
-              ),
-
-              const SizedBox(height: 24),
-
-              // Directions button
-              SizedBox(
-                width: double.infinity,
-                child: ElevatedButton.icon(
-                  onPressed:
-                      () => _launchMaps('Hotel Anchor, Ranchi, Jharkhand'),
-                  icon: const Icon(Icons.directions),
-                  label: const Text('Get Directions'),
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: const Color(0xFFB08968),
-                    foregroundColor: Colors.white,
-                    padding: const EdgeInsets.symmetric(vertical: 12),
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(8),
-                    ),
-                  ),
-                ),
-              ),
-            ],
-          ),
-        ),
-      ],
-    );
-  }
-
   Widget _buildGoogleMap(double height) {
     return SizedBox(
       height: height,
@@ -235,12 +149,12 @@ class _HotelLocationInfoState extends State<HotelLocationInfo> {
         onMapCreated: _onMapCreated,
         initialCameraPosition: const CameraPosition(
           target: _hotelLocation,
-          zoom: 15,
+          zoom: 18,
         ),
         markers: _markers,
         mapType: MapType.normal,
         myLocationEnabled: false,
-        zoomControlsEnabled: false,
+        zoomControlsEnabled: true,
         mapToolbarEnabled: false,
       ),
     );
