@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hotelanchor/core/routes/app_routes.dart';
 import 'package:hotelanchor/core/constants/app_constants.dart';
-import 'package:hotelanchor/core/widgets/spinkit_logo_widget.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
@@ -32,10 +31,8 @@ class _SplashScreenState extends State<SplashScreen>
   }
 
   Future<void> _navigateToNext() async {
-    // Reduced delay to 3 seconds
     await Future.delayed(const Duration(seconds: 3));
     if (mounted) {
-      // Changed login to auth since that's the correct route name
       Navigator.pushReplacementNamed(context, AppRoutes.hotels);
     }
   }
@@ -48,13 +45,17 @@ class _SplashScreenState extends State<SplashScreen>
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            // Using SpinKitLogoWidget with animation
+            // Smaller logo with animation
             ScaleTransition(
               scale: CurvedAnimation(
                 parent: _controller,
                 curve: Curves.easeInOut,
               ),
-              child: const SpinKitLogoWidget(size: 120),
+              child: Image.asset(
+                '${AppConstants.imagePath}/logo.png',
+                width: 100, // Reduced from 120 to 100
+                height: 100, // Reduced from 120 to 100
+              ),
             ),
             const SizedBox(height: 24),
             FadeTransition(

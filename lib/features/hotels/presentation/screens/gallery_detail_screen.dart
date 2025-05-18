@@ -21,9 +21,10 @@ class GalleryDetailScreen extends StatelessWidget {
         iconTheme: const IconThemeData(color: Colors.white),
       ),
       extendBodyBehindAppBar: true,
-      body: GestureDetector(
-        onTap: () => Navigator.pop(context),
-        child: Center(
+      body: Center(
+        child: InteractiveViewer(
+          minScale: 0.5,
+          maxScale: 4.0,
           child: Hero(
             tag: tag,
             child: Image.asset(imagePath, fit: BoxFit.contain),
